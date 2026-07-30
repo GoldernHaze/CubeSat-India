@@ -25,8 +25,7 @@
  * \brief Firmware version definitions for the CubeSat Packet Pipeline.
  *
  * \author Hardik Singhal <24uec235@lnmiit.ac.in>
- * \author Shivansh Gupta
- * \author Amrit Mishra
+ * \author Shivansh Gupta <24uec228@lnmiit.ac.in>
  *
  * \mentor Lucas Ryan
  *

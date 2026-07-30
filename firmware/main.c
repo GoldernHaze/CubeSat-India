@@ -27,8 +27,7 @@
  *        FreeRTOS tasks (POSIX simulation).
  *
 * \author Hardik Singhal <24uec235@lnmiit.ac.in>
-* \author Shivansh Gupta 
-* \author Amrit Mishra 
+* \author Shivansh Gupta <24uec228@lnmiit.ac.in>
  * \version 1.0.0
  * \mentor Lucas Ryan
  * \date 2026/07/29

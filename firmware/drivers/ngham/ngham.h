@@ -26,8 +26,7 @@
  *        used to convert payload chunks into transmittable NGHam frames.
  *
 * \author Hardik Singhal <24uec235@lnmiit.ac.in>
-* \author Shivansh Gupta 
-* \author Amrit Mishra 
+* \author Shivansh Gupta <24uec228@lnmiit.ac.in>
 
  * \mentor Lucas Ryan
  *
