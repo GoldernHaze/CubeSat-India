@@ -2,7 +2,7 @@
 
 Learning notes covering the FreeRTOS concepts used in the packet pipeline: tasks, scheduling, queues, synchronization, and memory management. Written while preparing for the S-band Transmitter packet handling implementation.
 
-1. [Introduction to FreeRTOS](Lesson%201%3A%20Introduction%20to%20FreeRTOS.md)
+1. [Introduction to FreeRTOS](%20Lesson%201%3A%20Introduction%20to%20FreeRTOS.md)
 2. [The FreeRTOS scheduler and context switching](Lesson%202%3A%20The%20FreeRTOS%20Scheduler%20and%20Context%20Switching.md)
 3. [FreeRTOS task states](Lesson%203%3A%20FreeRTOS%20Task%20States.md)
 4. [FreeRTOS tasks and the task control block (TCB)](Lesson%204%3A%20FreeRTOS%20Tasks%20and%20the%20Task%20Control%20Block%20%28TCB%29.md)
