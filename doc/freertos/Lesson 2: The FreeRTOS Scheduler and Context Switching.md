@@ -1884,5 +1884,4 @@ Transmitter
 ---
 
 **Author:** Hardik Singhal
-**Email:** 24uec235@lnmiit.ac.in
-**GitHub:** [@GoldernHaze](https://github.com/GoldernHaze)
+

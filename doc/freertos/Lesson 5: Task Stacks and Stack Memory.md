@@ -857,9 +857,3 @@ Topics:
 | 7 | Core APIs | Upcoming |
 | 8 | Synchronization | Upcoming |
 | 9 | Memory Management | Upcoming |
-
----
-
-**Author:** Hardik Singhal
-**Email:** 24uec235@lnmiit.ac.in
-**GitHub:** [@GoldernHaze](https://github.com/GoldernHaze)

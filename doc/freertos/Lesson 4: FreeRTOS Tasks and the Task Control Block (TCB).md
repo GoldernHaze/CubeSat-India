@@ -1643,9 +1643,3 @@ Transmitter
 ---
 
 *These notes document my understanding while learning FreeRTOS for an embedded systems internship involving an MSP430-based payload data-handling and communication system.*
-
----
-
-**Author:** Hardik Singhal
-**Email:** 24uec235@lnmiit.ac.in
-**GitHub:** [@GoldernHaze](https://github.com/GoldernHaze)
