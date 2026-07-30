@@ -16,7 +16,9 @@
         <a href="https://freertos.org">
         <img src="https://img.shields.io/badge/rtos-FreeRTOS-blue?style=for-the-badge">
     </a>
+    <a href="https://freertos.org/Documentation/02-Kernel/03-Supported-devices/04-Demos/03-Emulation-and-simulation/Linux/FreeRTOS-simulator-for-Linux">
     <img src="https://img.shields.io/badge/target-POSIX%20simulator-orange?style=for-the-badge">
+    </a>
     <a href="../LICENSE">
         <img src="https://img.shields.io/badge/license-GPL3-yellow?style=for-the-badge">
     </a>
