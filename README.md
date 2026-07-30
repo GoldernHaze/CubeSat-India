@@ -46,7 +46,7 @@ make
 
 ## Documentation
 
-Protocol notes (NGHam packet structure, SPP, extension packets) and FreeRTOS reference material are available in [`docs/`](../docs).
+Protocol notes (NGHam packet structure, SPP, extension packets) and FreeRTOS reference material are available in [`docs/`](../doc).
 
 ## License
 
