@@ -15,4 +15,4 @@ Learning notes covering the FreeRTOS concepts used in the packet pipeline: tasks
 
 ---
 
-All lesson notes authored by Hardik Singhal ([@GoldernHaze](https://github.com/GoldernHaze), 24uec235@lnmiit.ac.in).
+All lesson notes authored by Hardik Singhal ([@GoldernHaze](https://github.com/GoldernHaze), Shivansh Gupta ([@shivanshgupta020905](https://github.com/shivanshgupta020905)
