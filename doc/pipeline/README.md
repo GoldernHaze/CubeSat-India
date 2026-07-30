@@ -2,7 +2,7 @@
 
 Documents the design of the CubeSat packet pipeline: four FreeRTOS tasks handling payload fragmentation, queuing, NGHam encoding, and housekeeping telemetry.
 
-![Pipeline architecture](../figures/pipeline_architecture.png)
+![Pipeline architecture](../figures/arti.png)
 
 ## Contents
 
