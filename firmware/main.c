@@ -28,6 +28,7 @@
  *
 * \author Hardik Singhal <24uec235@lnmiit.ac.in>
 * \author Shivansh Gupta <24uec228@lnmiit.ac.in>
+* \author Amrit <https://github.com/Amrit14feb>
  * \version 1.0.0
  * \mentor Lucas Ryan
  * \date 2026/07/29
