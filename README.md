@@ -11,7 +11,7 @@
     <a href="https://freertos.org">
         <img src="https://img.shields.io/badge/platform-FreeRTOS%20POSIX-blue?style=for-the-badge">
     </a>
-    <a href="../doc/ngham">
+    <a href="https://mgm8.github.io/pyngham/">
         <img src="https://img.shields.io/badge/protocol-NGHam-yellow?style=for-the-badge">
     </a>
     <a href="#contributors">
