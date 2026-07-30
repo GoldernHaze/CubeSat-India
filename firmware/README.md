@@ -7,11 +7,17 @@
 <h4 align="center">Payload fragmentation, queuing, NGHam encapsulation, and telemetry monitoring firmware (sources, configs and documentation).</h4>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/status-in%20development-red?style=for-the-badge">
+    <a href="https://github.com/spacelab-ufsc/S-band-transmitter">
+        <img src="https://img.shields.io/badge/status-in%20development-red?style=for-the-badge">
+    </a>
     <img src="https://img.shields.io/badge/language-C-green?style=for-the-badge">
-    <img src="https://img.shields.io/badge/RTOS-FreeRTOS-blue?style=for-the-badge">
-    <img src="https://img.shields.io/badge/target-POSIX%20Simulator-orange?style=for-the-badge">
-    <img src="https://img.shields.io/badge/license-GPL3-yellow?style=for-the-badge">
+    <a href="https://freertos.org">
+        <img src="https://img.shields.io/badge/rtos-FreeRTOS-blue?style=for-the-badge">
+    </a>
+    <img src="https://img.shields.io/badge/target-POSIX%20simulator-orange?style=for-the-badge">
+    <a href="../LICENSE">
+        <img src="https://img.shields.io/badge/license-GPL3-yellow?style=for-the-badge">
+    </a>
 </p>
 
 <p align="center">
