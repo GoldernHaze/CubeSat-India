@@ -108,7 +108,7 @@ In development — currently validated end-to-end on the POSIX simulator (payloa
 
 - [Hardik Singhal](https://github.com/GoldernHaze/)
 - [Shivansh Gupta](https://github.com/shivanshgupta020905)
-- [Amrit Mishra]
+- [Amrit Mishra](https://github.com/Amrit14feb)
 
 **Mentor:** [Lucas Ryan](https://github.com/SPHINXLRC)
 ## License
