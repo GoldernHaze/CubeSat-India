@@ -32,4 +32,4 @@ Task 4 (Housekeeping Generator)
 ```
 ---
 
-Developed by Hardik Singhal ([@GoldernHaze](https://github.com/GoldernHaze), 24uec235@lnmiit.ac.in), Shivansh Gupta ([@shivanshgupta020905](https://github.com/shivanshgupta020905), 24uec228@lnmiit.ac.in), and Amrit Mishra, as SpaceLab summer interns under the mentorship of Lucas Ryan.
+Developed by Shivansh Gupta ([@shivanshgupta020905](https://github.com/shivanshgupta020905), 24uec228@lnmiit.ac.in), and Amrit Mishra, as SpaceLab summer interns under the mentorship of Lucas Ryan.

@@ -100,4 +100,4 @@ Two consecutive unchanged periods (rather than one) are required before the pipe
 
 ---
 
-Written by Shivansh Gupta ([@shivanshgupta020905](https://github.com/shivanshgupta020905), 24uec228@lnmiit.ac.in).
+

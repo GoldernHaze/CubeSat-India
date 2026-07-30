@@ -182,4 +182,4 @@ Returns `-1` if the payload exceeds the largest available size class; Task 3 che
 
 ---
 
-Written by Shivansh Gupta ([@shivanshgupta020905](https://github.com/shivanshgupta020905), 24uec228@lnmiit.ac.in).
+Written by Shivansh Gupta ([@shivanshgupta020905](https://github.com/shivanshgupta020905)).
