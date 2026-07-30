@@ -9,6 +9,16 @@ Marcelino** as a Python port of the original NGHam library written in C by **Jon
 Skagmo (LA3JPA)** — to encode sample telemetry data and observe the protocol's behavior
 end-to-end.
 
+NGHam (Next Generation Ham Radio Protocol) is a lightweight communication protocol developed
+for amateur radio and CubeSat missions where data must be transmitted reliably over noisy RF 
+links. It packages application data into structured frames containing synchronization fields,
+error detection, and Reed-Solomon forward error correction, allowing receivers to recover from
+a limited number of transmission errors without requiring retransmission. Because satellite 
+downlinks often experience signal fading, interference, and high bit error rates, NGHam provides
+a robust and bandwidth-efficient method for exchanging telemetry, telecommands, and other mission
+data between spacecraft and ground stations. This task uses the Python implementation of NGHam
+(pyngham) to understand the protocol's operation before implementing it in C for the MSP430 platform.
+
 **Tools used:** Python 3, the `pyngham` library (`PyNGHam`, `PyNGHamSPP`,
 `PyNGHamExtension` classes), and Python's built-in `struct` module for byte-level packing.
 
