@@ -49,5 +49,8 @@ make
 Protocol notes (NGHam packet structure, SPP, extension packets) and FreeRTOS reference material are available in [`doc/`](doc).
 
 ## License
+## License
+
+This project is open-source under two licenses: GNU General Public License v3.0 for firmware sources, and CC BY-SA 4.0 for the documentation. Some third-party files and libraries (e.g. the FreeRTOS kernel) are subject to their own specific terms and licenses.
 
 This project is open-source under the GNU General Public License v3.0.
