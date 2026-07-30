@@ -8,14 +8,24 @@ The deliverable for this task is therefore not "transmit housekeeping packets," 
 
 ## Design rationale: module separation
 
-This follows the same pattern as `payload_chunk.h` and `ngham.h`: a `.h` file declaring the interface, and a `.c` file owning the implementation and state. External modules do not need visibility into how the data is stored — every other file interacts only through `Housekeeping_Init()`, `vTask4_HousekeepingGenerator()`, or `Housekeeping_GetSnapshot()`. This separation is relevant because the eventual reader (TT&C) is a module whose internals are not controlled here — the interface constitutes the actual contract between the two.
+This follows the same pattern as `app/structs/payload_chunk.h` and `drivers/ngham/ngham.h`: a `.h` file declaring the interface, and a `.c` file owning the implementation and state. External modules do not need visibility into how the data is stored — every other file interacts only through `Housekeeping_Init()`, `vTask4_HousekeepingGenerator()`, or `Housekeeping_GetSnapshot()`. This separation is relevant because the eventual reader (TT&C) is a module whose internals are not controlled here — the interface constitutes the actual contract between the two.
+
+## Folder placement
+```
+firmware/
+└── app/
+└── structs/
+├── payload_chunk.h
+└── housekeeping.h (+ housekeeping.c)
+```
+`HousekeepingData_t` is an application-level shared struct, same category as `PayloadChunk_t`, so it lives alongside it in `app/structs/` rather than under `drivers/`.
 
 ## Shared files
 
-This task builds directly on the encoding pipeline and reuses two of its files unmodified:
+This task builds directly on the encoding pipeline and reuses two files unmodified:
 
-- `ngham.h` — the NGHam packet encoder. Unmodified; `main.c` still includes it because the encoder task is unchanged.
-- `payload_chunk.h` — the `PayloadChunk_t` struct definition. Unmodified for the same reason.
+- `drivers/ngham/ngham.h` — the NGHam packet encoder. Unmodified; `main.c` still includes it because the encoder task is unchanged.
+- `app/structs/payload_chunk.h` — the `PayloadChunk_t` struct definition. Unmodified for the same reason.
 
 Only `housekeeping.h`, `housekeeping.c`, and the updated `main.c` are new.
 
