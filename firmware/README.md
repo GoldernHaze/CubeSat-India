@@ -10,8 +10,10 @@
     <a href="https://github.com/spacelab-ufsc/S-band-transmitter">
         <img src="https://img.shields.io/badge/status-in%20development-red?style=for-the-badge">
     </a>
+    <a href="https://devdocs.io/c">
     <img src="https://img.shields.io/badge/language-C-green?style=for-the-badge">
-    <a href="https://freertos.org">
+    </a>
+        <a href="https://freertos.org">
         <img src="https://img.shields.io/badge/rtos-FreeRTOS-blue?style=for-the-badge">
     </a>
     <img src="https://img.shields.io/badge/target-POSIX%20simulator-orange?style=for-the-badge">
