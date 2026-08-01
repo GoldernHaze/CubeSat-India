@@ -26,7 +26,9 @@
     <a href="#documentation">Documentation</a> •
     <a href="#license">License</a>
 </p>
-
+<p align="center">
+    <img width="70%" src="doc/figures/banner.png">
+</p>
 <p align="center">
     <img width="70%" src="doc/figures/ttc2_pcb_3d.png">
 </p>
