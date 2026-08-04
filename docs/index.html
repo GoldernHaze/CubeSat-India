@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CubeSat-India — TT&C Packet Pipeline</title>
+<meta name="description" content="Payload packet handling pipeline for the S-band Transmitter. Fragmentation, queuing, NGHam encoding, and telemetry — built on FreeRTOS.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="skip-link"><a href="#main">Skip to content</a></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">
+      <span class="brand-mark" aria-hidden="true">◈</span>
+      <span>CUBESAT&#8209;INDIA</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#overview">Overview</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#build">Build</a>
+      <a href="#docs">Docs</a>
+      <a href="#crew">Crew</a>
+      <a href="#license">License</a>
+    </nav>
+    <a class="nav-cta" href="https://github.com/GoldernHaze/CubeSat-India" target="_blank" rel="noopener">
+      View source →
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+
+      <div class="badges" role="list">
+        <span class="badge badge-status" role="listitem">STATUS · IN DEVELOPMENT</span>
+        <span class="badge" role="listitem">PLATFORM · FREERTOS POSIX</span>
+        <span class="badge" role="listitem">PROTOCOL · NGHAM</span>
+        <span class="badge" role="listitem">CONTRIBUTORS · 3</span>
+      </div>
+
+      <h1 class="hero-title">
+        Packet Pipeline<br>
+        <span class="hero-title-accent">for the S&#8209;band Transmitter</span>
+      </h1>
+
+      <p class="hero-sub">
+        An open-source TT&amp;C subsystem built during a SpaceLab (UFSC) summer internship —
+        reading occultation payload data, fragmenting it, queuing it in order, encoding it
+        into NGHam frames, and reporting live telemetry the whole way through.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://github.com/GoldernHaze/CubeSat-India" target="_blank" rel="noopener">View on GitHub</a>
+        <a class="btn btn-ghost" href="#architecture">See how it works ↓</a>
+      </div>
+
+      <!-- SIGNATURE ELEMENT: live packet stream through 4 stages -->
+      <div class="pipeline-strip" aria-hidden="true">
+        <div class="stage-row">
+          <div class="stage-node" data-stage="1"><span class="stage-dot"></span><span class="stage-label">FRAGMENT</span></div>
+          <div class="stage-node" data-stage="2"><span class="stage-dot"></span><span class="stage-label">QUEUE</span></div>
+          <div class="stage-node" data-stage="3"><span class="stage-dot"></span><span class="stage-label">ENCODE</span></div>
+          <div class="stage-node" data-stage="4"><span class="stage-dot"></span><span class="stage-label">TELEMETRY</span></div>
+        </div>
+        <div class="stream-track">
+          <div class="stream-line"></div>
+          <div class="packet-chip" id="packetChip">AA AA 5D E6</div>
+        </div>
+        <div class="readout" id="readout" aria-live="off">
+          &gt; occ=1000 seq=1/4 bytes=32 &#8594; NGHam packet (90 bytes)
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ OVERVIEW ============ -->
+  <section class="section" id="overview">
+    <div class="section-inner narrow">
+      <p class="eyebrow">01 · OVERVIEW</p>
+      <h2>What this module does</h2>
+      <p class="lede">
+        This module implements the packet handling pipeline for the S-band Transmitter payload:
+        reading payload data, fragmenting it into transmission-sized chunks, ordering it through
+        a FIFO queue, encoding it into NGHam frames, and monitoring pipeline telemetry — queue
+        occupancy, generation and transmission rates, overflow counts.
+      </p>
+      <p class="lede">
+        It's implemented as four FreeRTOS tasks and validated end-to-end on the FreeRTOS
+        POSIX/Linux simulator ahead of MCU integration.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ ARCHITECTURE ============ -->
+  <section class="section section-alt" id="architecture">
+    <div class="section-inner">
+      <p class="eyebrow">02 · ARCHITECTURE</p>
+      <h2>Four tasks, two queues</h2>
+      <p class="lede">Each stage hands off to the next through a queue, preserving order end to end.</p>
+
+      <div class="stage-grid">
+
+        <article class="stage-card">
+          <div class="stage-card-head">
+            <span class="stage-num">01</span>
+            <h3>Payload Reader<br>/ Fragmenter</h3>
+          </div>
+          <p>Reads payload data per occultation event and splits it into fixed-size chunks.</p>
+          <div class="readout-box">
+            <span class="dim">$</span> occultation 1000: 100 bytes &#8594; 4 chunk(s)
+          </div>
+        </article>
+
+        <article class="stage-card">
+          <div class="stage-card-head">
+            <span class="stage-num">02</span>
+            <h3>FIFO Queue<br>Manager</h3>
+          </div>
+          <p>Forwards chunks in order, preserving transmission sequence.</p>
+          <div class="readout-box">
+            <span class="dim">$</span> forwarding occ=1000 seq=1/4 bytes=32
+          </div>
+        </article>
+
+        <article class="stage-card">
+          <div class="stage-card-head">
+            <span class="stage-num">03</span>
+            <h3>NGHam<br>Encoder</h3>
+          </div>
+          <p>Serializes and encodes each chunk into a transmittable NGHam frame — CRC16 + Reed-Solomon FEC.</p>
+          <div class="readout-box">
+            <span class="dim">$</span> &#8594; NGHam packet (90 bytes): AA AA AA AA&#8230;
+          </div>
+        </article>
+
+        <article class="stage-card">
+          <div class="stage-card-head">
+            <span class="stage-num">04</span>
+            <h3>Telemetry<br>Monitor</h3>
+          </div>
+          <p>Samples queue occupancy and updates generation/transmission rates in a shared, mutex-protected struct.</p>
+          <div class="readout-box">
+            <span class="dim">$</span> Q1=0 Q2=0 gen_rate=9/s tx_rate=9/s
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BUILD ============ -->
+  <section class="section" id="build">
+    <div class="section-inner narrow">
+      <p class="eyebrow">03 · BUILD &amp; RUN</p>
+      <h2>Running the simulator</h2>
+      <p class="lede">Validated on the FreeRTOS POSIX/Linux simulator before any MCU is involved.</p>
+
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+          <span class="terminal-title">firmware — zsh</span>
+        </div>
+        <pre class="terminal-body"><code><span class="prompt">$</span> cd firmware
+<span class="prompt">$</span> make
+<span class="prompt">$</span> ./build/telemetry_pipeline
+
+<span class="out">=== CubeSat Packet Pipeline — Task 1+2+3+4 (Telemetry) Test ===
+[Task1-PayloadReader] occultation 1000: 100 bytes -&gt; 4 chunk(s)
+[Task3-NGHamEncoder]  occ=1000 seq=1/4 -&gt; NGHam packet (90 bytes)
+[Task4-TelemetryMonitor] gen_rate=9/s  tx_rate=9/s  overflow(Q1=0, Q2=0)</span></code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DOCS ============ -->
+  <section class="section section-alt" id="docs">
+    <div class="section-inner narrow">
+      <p class="eyebrow">04 · DOCUMENTATION</p>
+      <h2>Protocol &amp; reference notes</h2>
+      <p class="lede">
+        Packet structure, SPP framing, extension packets, and FreeRTOS reference material
+        live in the repository's <code>doc/</code> folder.
+      </p>
+      <ul class="doc-list">
+        <li><a href="https://github.com/GoldernHaze/CubeSat-India/tree/main/doc/pipeline" target="_blank" rel="noopener"><span>pipeline/</span>payload fragmentation &amp; NGHam encoding notes</a></li>
+        <li><a href="https://github.com/GoldernHaze/CubeSat-India/tree/main/doc/ngham" target="_blank" rel="noopener"><span>ngham/</span>protocol reference + test script</a></li>
+        <li><a href="https://github.com/GoldernHaze/CubeSat-India/tree/main/doc/freertos" target="_blank" rel="noopener"><span>freertos/</span>ten-lesson FreeRTOS primer</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CREW ============ -->
+  <section class="section" id="crew">
+    <div class="section-inner narrow">
+      <p class="eyebrow">05 · CREW</p>
+      <h2>Who built this</h2>
+
+      <ul class="crew-list">
+        <li class="crew-item">
+          <a href="https://github.com/GoldernHaze" target="_blank" rel="noopener">Hardik Singhal</a>
+          <span class="crew-role">Firmware — packet pipeline</span>
+        </li>
+        <li class="crew-item">
+          <a href="https://github.com/shivanshgupta020905" target="_blank" rel="noopener">Shivansh Gupta</a>
+          <span class="crew-role">Firmware &amp; documentation</span>
+        </li>
+        <li class="crew-item">
+          <a href="https://github.com/Amrit14feb" target="_blank" rel="noopener">Amrit Mishra</a>
+          <span class="crew-role">Firmware &amp; documentation</span>
+        </li>
+        <li class="crew-item crew-mentor">
+          <a href="https://github.com/SPHINXLRC" target="_blank" rel="noopener">Lucas Ryan</a>
+          <span class="crew-role">Mentor · SpaceLab UFSC</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ LICENSE ============ -->
+  <section class="section section-alt" id="license">
+    <div class="section-inner narrow">
+      <p class="eyebrow">06 · LICENSE</p>
+      <h2>Open source, two licenses</h2>
+      <p class="lede">
+        Firmware sources are under the <strong>GNU General Public License v3.0</strong>.
+        Documentation is under <strong>CC BY-SA 4.0</strong>. Some third-party files —
+        including the FreeRTOS kernel — carry their own license terms.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span>CubeSat-India — open source, student driven, space for all.</span>
+    <a href="https://github.com/GoldernHaze/CubeSat-India" target="_blank" rel="noopener">github.com/GoldernHaze/CubeSat-India</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
