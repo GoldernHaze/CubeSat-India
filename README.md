@@ -28,7 +28,7 @@
 </p>
 
 <p align="center">
-    <img width="70%" src="doc/figures/ttc2_pcb_3d.png">
+    <img width="70%" src="doc/figures/final.png">
 </p>
 
 ## Overview
